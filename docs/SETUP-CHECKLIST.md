@@ -1,25 +1,17 @@
 # Frontend setup checklist
 
-## 1. GitHub repo
+Repo: https://github.com/m1dabo/m1dabo.github.io
 
-Recommended names (pick one):
+## 1. GitHub Pages
 
-- `m1dabo.github.io` — cleanest public URL (`https://m1dabo.github.io`)
-- `portfolio-frontend` — then enable Pages on that repo (URL includes the repo name unless you use a custom domain)
+Pages source should be **GitHub Actions** (configured automatically on first workflow run).
 
-```powershell
-cd C:\Portfolio\frontend
-git remote add origin https://github.com/m1dabo/m1dabo.github.io.git
-# or: https://github.com/m1dabo/portfolio-frontend.git
-git push -u origin main
-```
-
-GitHub → Settings → Pages → Source: **GitHub Actions**.
+Site URL: https://m1dabo.github.io
 
 ## 2. API URL
 
 Production builds call `https://api.m1dabo.is-a.dev` from `src/environments/environment.prod.ts`.  
-Until the API custom domain exists, temporarily point that file at your Azure Container Apps FQDN.
+Until the API custom domain exists, temporarily point that file at your Azure Container Apps FQDN and push.
 
 ## 3. Free domain `m1dabo.is-a.dev`
 
@@ -34,4 +26,4 @@ Until the API custom domain exists, temporarily point that file at your Azure Co
 - LinkedIn Website → `https://m1dabo.is-a.dev` (or github.io meanwhile)
 - GitHub profile README → same URL
 
-Backend setup: see the `portfolio-api` repo `docs/SETUP-CHECKLIST.md`.
+Backend setup: https://github.com/m1dabo/portfolio-api/blob/main/docs/SETUP-CHECKLIST.md
