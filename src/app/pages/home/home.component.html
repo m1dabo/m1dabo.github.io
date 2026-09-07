@@ -1,0 +1,281 @@
+<div class="mx-auto max-w-5xl px-4 pb-24 sm:px-6">
+  <!-- Hero -->
+  <section id="hero" class="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center py-16">
+    <div
+      class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--accent-soft),_transparent_55%)]"
+      aria-hidden="true"
+    ></div>
+    <p class="mb-3 text-sm font-medium tracking-wide text-[var(--accent)]">
+      {{ profile.location }}
+    </p>
+    <h1 class="text-4xl font-bold tracking-tight text-[var(--fg)] sm:text-5xl md:text-6xl">
+      {{ profile.name }}
+    </h1>
+    <p class="mt-3 text-xl text-[var(--fg-muted)] sm:text-2xl">{{ profile.title }}</p>
+    <p class="mt-6 max-w-2xl text-base leading-relaxed text-[var(--fg-muted)] sm:text-lg">
+      {{ profile.summary }}
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a
+        class="inline-flex items-center rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--accent-fg)] transition hover:opacity-90"
+        [href]="resumeHref()"
+        target="_blank"
+        rel="noopener"
+      >
+        Download resume
+      </a>
+      <a
+        class="inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-2.5 text-sm font-medium transition hover:border-[var(--accent)]"
+        href="#contact"
+      >
+        Contact
+      </a>
+      <a
+        class="inline-flex items-center rounded-lg px-3 py-2.5 text-sm text-[var(--fg-muted)] transition hover:text-[var(--accent)]"
+        [href]="'mailto:' + profile.email"
+      >
+        Email
+      </a>
+      <a
+        class="inline-flex items-center rounded-lg px-3 py-2.5 text-sm text-[var(--fg-muted)] transition hover:text-[var(--accent)]"
+        [href]="profile.links.linkedin"
+        target="_blank"
+        rel="noopener"
+      >
+        LinkedIn
+      </a>
+      <a
+        class="inline-flex items-center rounded-lg px-3 py-2.5 text-sm text-[var(--fg-muted)] transition hover:text-[var(--accent)]"
+        [href]="profile.links.github"
+        target="_blank"
+        rel="noopener"
+      >
+        GitHub
+      </a>
+    </div>
+
+    <p class="mt-8 text-sm text-[var(--fg-muted)]">
+      @if (viewsToday() !== null) {
+        <span class="inline-flex items-center gap-2">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-60"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent)]"></span>
+          </span>
+          {{ viewsToday() }} visitors today
+        </span>
+      } @else {
+        <span>Building reliable systems in Riyadh</span>
+      }
+    </p>
+  </section>
+
+  <!-- Impact -->
+  <section id="impact" class="scroll-mt-24 py-16">
+    <h2 class="text-2xl font-semibold tracking-tight">Impact</h2>
+    <p class="mt-2 text-[var(--fg-muted)]">Outcomes from production platforms at scale.</p>
+    <div class="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4">
+      @for (metric of profile.impact; track metric.label) {
+        <div class="border-l-2 border-[var(--accent)] pl-4">
+          <div class="text-3xl font-bold text-[var(--fg)]">{{ metric.value }}</div>
+          <div class="mt-1 text-sm text-[var(--fg-muted)]">{{ metric.label }}</div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Case studies -->
+  <section id="case-studies" class="scroll-mt-24 py-16">
+    <h2 class="text-2xl font-semibold tracking-tight">Case studies</h2>
+    <p class="mt-2 text-[var(--fg-muted)]">Selected architecture and delivery work.</p>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2">
+      @for (study of profile.caseStudies; track study.slug) {
+        <a
+          class="group block border-b border-[var(--border)] pb-6 transition hover:border-[var(--accent)]"
+          [routerLink]="['/case-studies', study.slug]"
+        >
+          <h3 class="text-lg font-semibold group-hover:text-[var(--accent)]">{{ study.title }}</h3>
+          <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-[var(--fg-muted)]">
+            {{ study.problem }}
+          </p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            @for (tag of study.tags.slice(0, 4); track tag) {
+              <span class="text-xs text-[var(--accent)]">{{ tag }}</span>
+            }
+          </div>
+        </a>
+      }
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="scroll-mt-24 py-16">
+    <h2 class="text-2xl font-semibold tracking-tight">Experience</h2>
+    <p class="mt-2 text-[var(--fg-muted)]">Roles across enterprise platforms and product delivery.</p>
+    <ol class="mt-10 space-y-10 border-l border-[var(--border)] pl-6">
+      @for (job of profile.experience; track job.company + job.start) {
+        <li class="relative">
+          <span
+            class="absolute -left-[1.9rem] top-1.5 h-3 w-3 rounded-full border-2 border-[var(--accent)] bg-[var(--bg)]"
+          ></span>
+          <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+            <h3 class="text-lg font-semibold">{{ job.role }}</h3>
+            <span class="text-sm text-[var(--fg-muted)]">{{ job.start }} – {{ job.end }}</span>
+          </div>
+          <p class="text-sm text-[var(--accent)]">{{ job.company }} · {{ job.location }}</p>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-[var(--fg-muted)]">
+            @for (bullet of job.bullets; track bullet) {
+              <li class="flex gap-2">
+                <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--fg-muted)]"></span>
+                <span>{{ bullet }}</span>
+              </li>
+            }
+          </ul>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="scroll-mt-24 py-16">
+    <h2 class="text-2xl font-semibold tracking-tight">Skills</h2>
+    <p class="mt-2 text-[var(--fg-muted)]">Languages, platforms, and delivery tooling.</p>
+    <div class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      @for (group of profile.skills; track group.name) {
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-[var(--accent)]">
+            {{ group.name }}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--fg-muted)]">
+            {{ group.skills.join(' · ') }}
+          </p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Open source -->
+  <section id="open-source" class="scroll-mt-24 py-16">
+    <h2 class="text-2xl font-semibold tracking-tight">Open source</h2>
+    <p class="mt-2 text-[var(--fg-muted)]">Recent public repositories.</p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      @for (repo of repos(); track repo.htmlUrl) {
+        <a
+          class="block border-b border-[var(--border)] py-4 transition hover:border-[var(--accent)]"
+          [href]="repo.htmlUrl"
+          target="_blank"
+          rel="noopener"
+        >
+          <div class="flex items-baseline justify-between gap-3">
+            <h3 class="font-semibold">{{ repo.name }}</h3>
+            <span class="text-xs text-[var(--fg-muted)]">★ {{ repo.stars }}</span>
+          </div>
+          @if (repo.description) {
+            <p class="mt-1 text-sm text-[var(--fg-muted)]">{{ repo.description }}</p>
+          }
+          @if (repo.language) {
+            <p class="mt-2 text-xs text-[var(--accent)]">{{ repo.language }}</p>
+          }
+        </a>
+      }
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="scroll-mt-24 py-16">
+    <h2 class="text-2xl font-semibold tracking-tight">Education</h2>
+    @for (edu of profile.education; track edu.school) {
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold">{{ edu.degree }}</h3>
+        @if (edu.minor) {
+          <p class="text-sm text-[var(--fg-muted)]">Minor in {{ edu.minor }}</p>
+        }
+        <p class="mt-1 text-sm text-[var(--accent)]">
+          {{ edu.school }} · {{ edu.location }} · {{ edu.year }}
+        </p>
+      </div>
+    }
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="scroll-mt-24 py-16">
+    <h2 class="text-2xl font-semibold tracking-tight">Contact</h2>
+    <p class="mt-2 text-[var(--fg-muted)]">
+      Open to senior engineering roles and consulting conversations.
+    </p>
+
+    <form
+      class="mt-8 max-w-xl space-y-4"
+      [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()"
+      (focusin)="warmApi()"
+    >
+      <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+        <label>
+          Website
+          <input type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
+        />
+      </div>
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
+        />
+      </div>
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="company">Company (optional)</label>
+        <input
+          id="company"
+          type="text"
+          formControlName="company"
+          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
+        />
+      </div>
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="message">Message</label>
+        <textarea
+          id="message"
+          rows="5"
+          formControlName="message"
+          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--accent-fg)] transition hover:opacity-90 disabled:opacity-60"
+        [disabled]="submitting()"
+      >
+        {{ submitting() ? 'Sending…' : 'Send message' }}
+      </button>
+
+      @if (submitMessage()) {
+        <p class="text-sm text-[var(--success)]">{{ submitMessage() }}</p>
+      }
+      @if (submitError()) {
+        <p class="text-sm text-[var(--danger)]">{{ submitError() }}</p>
+      }
+    </form>
+
+    <p class="mt-6 text-sm text-[var(--fg-muted)]">
+      Or reach me at
+      <a class="text-[var(--accent)] hover:underline" [href]="'mailto:' + profile.email">{{
+        profile.email
+      }}</a>
+      · {{ profile.phone }}
+    </p>
+  </section>
+</div>

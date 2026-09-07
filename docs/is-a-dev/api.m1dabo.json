@@ -1,0 +1,9 @@
+{
+  "owner": {
+    "username": "m1dabo",
+    "email": "mohammed.dabo@hotmail.com"
+  },
+  "records": {
+    "CNAME": "REPLACE_WITH_YOUR_CONTAINER_APP_FQDN.azurecontainerapps.io"
+  }
+}

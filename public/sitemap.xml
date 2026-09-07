@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://m1dabo.is-a.dev/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://m1dabo.is-a.dev/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://m1dabo.is-a.dev/case-studies/redis-sentinel-ha</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://m1dabo.is-a.dev/case-studies/zatca-microservices</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://m1dabo.is-a.dev/case-studies/sap-cpi-integrations</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://m1dabo.is-a.dev/case-studies/azure-devops-cicd</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://m1dabo.is-a.dev/case-studies/arabdt-saas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://m1dabo.is-a.dev/sitemap.xml
+

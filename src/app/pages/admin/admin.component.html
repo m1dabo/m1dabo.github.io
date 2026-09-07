@@ -1,0 +1,155 @@
+<div class="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+  <div class="flex items-center justify-between gap-4">
+    <h1 class="text-3xl font-bold tracking-tight">Admin</h1>
+    @if (token()) {
+      <button
+        type="button"
+        class="text-sm text-[var(--fg-muted)] hover:text-[var(--danger)]"
+        (click)="logout()"
+      >
+        Sign out
+      </button>
+    }
+  </div>
+
+  @if (!token()) {
+    <form class="mt-10 max-w-sm space-y-4" [formGroup]="loginForm" (ngSubmit)="login()">
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          autocomplete="username"
+          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
+        />
+      </div>
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
+        />
+      </div>
+      <button
+        type="submit"
+        class="rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--accent-fg)] disabled:opacity-60"
+        [disabled]="loading()"
+      >
+        {{ loading() ? 'Signing in…' : 'Sign in' }}
+      </button>
+      @if (error()) {
+        <p class="text-sm text-[var(--danger)]">{{ error() }}</p>
+      }
+    </form>
+  } @else if (analytics(); as a) {
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="border-l-2 border-[var(--accent)] pl-4">
+        <div class="text-2xl font-bold">{{ a.totalPageViews }}</div>
+        <div class="text-sm text-[var(--fg-muted)]">Page views</div>
+      </div>
+      <div class="border-l-2 border-[var(--accent)] pl-4">
+        <div class="text-2xl font-bold">{{ a.uniqueVisitorsApprox }}</div>
+        <div class="text-sm text-[var(--fg-muted)]">Approx. unique</div>
+      </div>
+      <div class="border-l-2 border-[var(--accent)] pl-4">
+        <div class="text-2xl font-bold">{{ a.contactMessages }}</div>
+        <div class="text-sm text-[var(--fg-muted)]">Contacts</div>
+      </div>
+      <div class="border-l-2 border-[var(--accent)] pl-4">
+        <div class="text-2xl font-bold">{{ a.resumeDownloads }}</div>
+        <div class="text-sm text-[var(--fg-muted)]">Resume downloads</div>
+      </div>
+    </div>
+
+    <div class="mt-10">
+      <h2 class="text-lg font-semibold">Views by day</h2>
+      <div class="mt-4 h-64 w-full">
+        <canvas #chartCanvas aria-label="Views by day chart"></canvas>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-3">
+      <div>
+        <h2 class="text-lg font-semibold">Top paths</h2>
+        <table class="mt-3 w-full text-left text-sm">
+          <thead>
+            <tr class="text-[var(--fg-muted)]">
+              <th class="py-1 font-medium">Path</th>
+              <th class="py-1 font-medium">Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of a.topPaths; track row.path) {
+              <tr class="border-t border-[var(--border)]">
+                <td class="py-2 pr-2 break-all">{{ row.path }}</td>
+                <td class="py-2">{{ row.count }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td class="py-2 text-[var(--fg-muted)]" colspan="2">No data</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-semibold">Top referrers</h2>
+        <table class="mt-3 w-full text-left text-sm">
+          <thead>
+            <tr class="text-[var(--fg-muted)]">
+              <th class="py-1 font-medium">Referrer</th>
+              <th class="py-1 font-medium">Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of a.topReferrers; track row.referrer) {
+              <tr class="border-t border-[var(--border)]">
+                <td class="py-2 pr-2 break-all">{{ row.referrer || '(direct)' }}</td>
+                <td class="py-2">{{ row.count }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td class="py-2 text-[var(--fg-muted)]" colspan="2">No data</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-semibold">Top countries</h2>
+        <table class="mt-3 w-full text-left text-sm">
+          <thead>
+            <tr class="text-[var(--fg-muted)]">
+              <th class="py-1 font-medium">Country</th>
+              <th class="py-1 font-medium">Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of a.topCountries; track row.country) {
+              <tr class="border-t border-[var(--border)]">
+                <td class="py-2 pr-2">{{ row.country || 'Unknown' }}</td>
+                <td class="py-2">{{ row.count }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td class="py-2 text-[var(--fg-muted)]" colspan="2">No data</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else if (loading()) {
+    <p class="mt-10 text-[var(--fg-muted)]">Loading analytics…</p>
+  }
+
+  @if (token() && error()) {
+    <p class="mt-6 text-sm text-[var(--danger)]">{{ error() }}</p>
+  }
+</div>
