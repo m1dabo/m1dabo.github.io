@@ -53,7 +53,7 @@ export class PrivacyComponent implements OnInit {
   ngOnInit(): void {
     this.seo.setPage({
       title: 'Privacy',
-      description: 'Cookie-less hashed analytics and contact form privacy notes for m1dabo.is-a.dev.',
+      description: 'Cookie-less hashed analytics and contact form privacy notes for m1dabo.github.io.',
       path: '/privacy',
       jsonLd: null,
     });

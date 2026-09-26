@@ -17,10 +17,10 @@ import { CommandPaletteComponent } from './shared/components/command-palette/com
 import { TerminalComponent } from './shared/components/terminal/terminal.component';
 
 const NAV_SECTIONS = [
-  { id: 'impact', label: 'Impact' },
-  { id: 'case-studies', label: 'Case studies' },
+  { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
+  { id: 'case-studies', label: 'Work' },
   { id: 'contact', label: 'Contact' },
 ] as const;
 

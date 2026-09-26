@@ -31,6 +31,13 @@ jobs:
       - name: Build
         run: npm run build -- --configuration=production
 
+      - name: GitHub Pages fallback
+        run: |
+          if [ ! -f dist/frontend/browser/404.html ]; then
+            cp dist/frontend/browser/index.html dist/frontend/browser/404.html
+          fi
+          rm -f dist/frontend/browser/CNAME
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

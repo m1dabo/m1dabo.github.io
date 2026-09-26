@@ -78,8 +78,9 @@ export class CommandPaletteComponent {
 
   private readonly actions: PaletteAction[] = [
     { id: 'hero', label: 'Go to Hero', hint: 'Home', run: () => this.scroll('hero') },
+    { id: 'about', label: 'Go to About', run: () => this.scroll('about') },
     { id: 'impact', label: 'Go to Impact', run: () => this.scroll('impact') },
-    { id: 'case-studies', label: 'Go to Case Studies', run: () => this.scroll('case-studies') },
+    { id: 'case-studies', label: 'Go to Selected Work', run: () => this.scroll('case-studies') },
     { id: 'experience', label: 'Go to Experience', run: () => this.scroll('experience') },
     { id: 'skills', label: 'Go to Skills', run: () => this.scroll('skills') },
     { id: 'open-source', label: 'Go to Open Source', run: () => this.scroll('open-source') },

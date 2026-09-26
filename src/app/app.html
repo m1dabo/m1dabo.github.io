@@ -96,6 +96,7 @@
   >
     <p>© {{ profile.name }} · {{ profile.location }}</p>
     <div class="flex flex-wrap gap-4">
+      <a [href]="'mailto:' + profile.email" class="hover:text-[var(--accent)]">Email</a>
       <a [href]="profile.links.github" target="_blank" rel="noopener" class="hover:text-[var(--accent)]"
         >GitHub</a
       >

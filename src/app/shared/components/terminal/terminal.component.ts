@@ -122,7 +122,12 @@ export class TerminalComponent {
           '  exit       — close terminal',
         ];
       case 'whoami':
-        return [`${PROFILE.name} — ${PROFILE.title}, ${PROFILE.location}`];
+        return [
+          `${PROFILE.name} — ${PROFILE.title}`,
+          PROFILE.headline,
+          PROFILE.location,
+          `ZATCA since Oct 2021 · ${PROFILE.links.site}`,
+        ];
       case 'skills':
         return PROFILE.skills.map((g) => `${g.name}: ${g.skills.join(', ')}`);
       case 'experience':

@@ -5,6 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { timeout } from 'rxjs';
 import { PROFILE } from '../../core/content/profile';
 import { ApiService, GitHubRepo } from '../../core/services/api.service';
 import { SeoService } from '../../core/services/seo.service';
@@ -66,10 +67,6 @@ export class HomeComponent implements OnInit {
   }
 
   resumeHref(): string {
-    return this.api.resumeUrl();
-  }
-
-  staticResumeHref(): string {
     return '/Mohammed-Dabo-Resume.pdf';
   }
 
@@ -107,6 +104,7 @@ export class HomeComponent implements OnInit {
         message: value.message,
         website: value.website || null,
       })
+      .pipe(timeout(8000))
       .subscribe({
         next: (res) => {
           this.submitting.set(false);
@@ -120,7 +118,9 @@ export class HomeComponent implements OnInit {
             `${value.message}\n\n— ${value.name}${value.company ? ` (${value.company})` : ''}\n${value.email}`,
           );
           window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`;
-          this.submitError.set('API unreachable — opened your email client as a fallback.');
+          this.submitMessage.set(
+            `Opened your email app with this message. You can also write directly to ${PROFILE.email}.`,
+          );
         },
       });
   }

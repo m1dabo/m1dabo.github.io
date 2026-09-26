@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://m1dabo.is-a.dev/sitemap.xml
-
+Sitemap: https://m1dabo.github.io/sitemap.xml
