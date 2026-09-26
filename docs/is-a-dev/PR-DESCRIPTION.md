@@ -25,6 +25,6 @@ This is my personal Senior Software Engineer portfolio (Angular 20 + .NET 10).
 
 ## After merge
 
-1. Confirm `public/CNAME` in this repo contains `m1dabo.is-a.dev`
+1. Add `public/CNAME` containing `m1dabo.is-a.dev` only after this domain resolves. It is intentionally absent while the name is unregistered, so Pages stays on https://m1dabo.github.io.
 2. In GitHub Pages settings, enable **Enforce HTTPS**
 3. For the API subdomain, add the custom domain + managed certificate in Azure Container Apps

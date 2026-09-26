@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://m1dabo.github.io';
+
 export interface ImpactMetric {
   value: string;
   label: string;
@@ -25,6 +27,12 @@ export interface ExperienceItem {
 export interface SkillGroup {
   name: string;
   skills: string[];
+  wide?: boolean;
+}
+
+export interface FocusArea {
+  label: string;
+  detail: string;
 }
 
 export interface EducationItem {
@@ -47,13 +55,19 @@ export interface GitHubRepoFallback {
 export interface Profile {
   name: string;
   title: string;
+  headline: string;
   summary: string;
+  coreSkills: string[];
+  about: string[];
+  availability: string;
+  focus: FocusArea[];
   location: string;
   email: string;
   phone: string;
   links: {
     github: string;
     linkedin: string;
+    site: string;
   };
   impact: ImpactMetric[];
   caseStudies: CaseStudy[];
@@ -66,20 +80,57 @@ export interface Profile {
 export const PROFILE: Profile = {
   name: 'Mohammed Dabo',
   title: 'Senior Software Engineer',
+  headline: '.NET · Microservices · Full-stack · DevOps',
+  coreSkills: [
+    'C# / .NET',
+    'Entity Framework',
+    'Microservices',
+    'REST',
+    'MSSQL',
+    'Redis',
+    'Angular',
+    'React',
+    'TypeScript',
+    'Azure DevOps',
+    'Docker',
+    'Kubernetes',
+  ],
   summary:
-    'Tech-agnostic Senior Software Engineer specializing in high-availability architecture, distributed microservices, and end-to-end full-stack development. I engineer robust API workflows and cross-platform mobile applications, leveraging advanced caching (Redis Sentinel), deployment automation (Azure DevOps), and database optimization to deliver scalable, high-concurrency enterprise platforms without being constrained by legacy tech stacks.',
+    'Senior Software Engineer at the Zakat, Tax and Customs Authority (ZATCA) in Riyadh since October 2021. I build enterprise .NET platforms — distributed microservices, REST APIs, Entity Framework on MSSQL, and Redis — and Angular, React, and TypeScript clients, with Azure DevOps taking them to production.',
+  about: [
+    'I have been a Senior Software Engineer at ZATCA since October 2021. Before that I was a Senior Software Engineer at ArabDT in New Cairo, a Software Engineer at Edge-Pro for Information System, and a Full-Stack Software Developer at Cloud Soft, both in Cairo.',
+    'At ZATCA the work is end-to-end change delivery on production tax and customs platforms: configurable baseline limits, asset retirement, and related workflows across 15+ .NET microservices. It includes a 3-node Redis Sentinel cluster, SAP Cloud Integration flows with Groovy and XPath, Azure DevOps pipelines and self-hosted build agents, and Angular and Expo React Native migrations, alongside 15+ production servers held at 99.9% uptime.',
+    'Hands-on skills: C# and .NET / .NET Core, Entity Framework, microservices, REST, MSSQL, Azure DevOps, Redis, Angular, React, TypeScript, Docker, Git, Python, Java, and Kubernetes. The same list includes AI agents, large language models, and retrieval-augmented generation, data engineering (ETL and pipelines), and DevOps and SRE habits for releases and production care.',
+  ],
+  availability:
+    'Open to senior roles in Saudi Arabia and the GCC: .NET and backend, full-stack, system design, and DevOps.',
+  focus: [
+    {
+      label: 'Backend',
+      detail: 'C#, .NET / .NET Core, Entity Framework, microservices, REST, and MSSQL.',
+    },
+    {
+      label: 'Full-stack',
+      detail: 'Angular, React, and TypeScript, including the Expo React Native and Angular migrations at ZATCA.',
+    },
+    {
+      label: 'Platform',
+      detail: 'Azure DevOps CI/CD, Docker, Kubernetes, Redis Sentinel, Git, and production uptime.',
+    },
+  ],
   location: 'Riyadh, Saudi Arabia',
   email: 'mohammed.dabo@hotmail.com',
   phone: '+(966)538604774',
   links: {
-    github: 'https://github.com/m1dabo/',
-    linkedin: 'https://www.linkedin.com/in/m1dabo/',
+    github: 'https://github.com/m1dabo',
+    linkedin: 'https://www.linkedin.com/in/m1dabo',
+    site: SITE_URL,
   },
   impact: [
-    { value: '40%', label: 'Faster responses' },
-    { value: '15+', label: 'Microservices' },
+    { value: '40%', label: 'Faster responses with Redis' },
+    { value: '15+', label: '.NET microservices' },
     { value: '99.9%', label: 'Uptime on 15+ servers' },
-    { value: '200%', label: 'Traffic growth handled' },
+    { value: '200%', label: 'Traffic growth at ArabDT' },
   ],
   caseStudies: [
     {
@@ -190,7 +241,9 @@ export const PROFILE: Profile = {
         'Architected a high-availability 3-node Redis master-replica cluster with Sentinel failover monitoring, cutting server response times by 40% and database load by 30%.',
         'Developed over 15 distributed microservices for Zakat, Tax, and Customs Authority using enterprise .NET and modern frameworks, improving system scalability and performance by 30%.',
         'Engineered enterprise workflows using SAP Cloud Integration (CPI) with custom Groovy scripts and XPath mapping, reducing integration friction by 20%.',
-        'Maintained 15+ production servers ensuring 99.9% uptime, automated deployments via Azure DevOps CI/CD pipelines and self-hosted build agents, and led cross-platform Expo React Native and Angular migrations.',
+        'Maintained 15+ production servers ensuring 99.9% uptime.',
+        'Automated deployments via Azure DevOps CI/CD pipelines and self-hosted build agents.',
+        'Led cross-platform Expo React Native and Angular migrations.',
       ],
     },
     {
@@ -232,40 +285,69 @@ export const PROFILE: Profile = {
   ],
   skills: [
     {
-      name: 'Languages',
-      skills: ['C', 'C++', 'C#', 'Java', 'TypeScript', 'Go', 'Node.js'],
+      name: 'Backend',
+      skills: [
+        'C#',
+        '.NET / .NET Core',
+        'Entity Framework / EF Core',
+        'Microservices',
+        'REST',
+        'Java',
+        'Python',
+      ],
     },
     {
-      name: 'APIs',
-      skills: ['SOAP', 'RESTful', 'GraphQL (basic)'],
+      name: 'Data',
+      skills: ['MSSQL', 'Redis', 'ETL & data pipelines', 'MySQL', 'PostgreSQL', 'Oracle'],
     },
     {
-      name: 'Databases',
-      skills: ['MSSQL', 'MySQL', 'PostgreSQL', 'Oracle'],
+      name: 'Front-end',
+      skills: [
+        'Angular',
+        'React',
+        'TypeScript',
+        'JavaScript',
+        'Expo React Native',
+        'HTML',
+        'CSS',
+        'Tailwind',
+      ],
     },
     {
-      name: 'Front-End',
-      skills: ['HTML', 'JavaScript', 'CSS', 'CSS3', 'Bootstrap', 'Materialize'],
+      name: 'DevOps & SRE',
+      skills: ['Azure DevOps', 'Docker', 'Kubernetes', 'Git', 'CI/CD pipelines', 'SRE habits'],
     },
     {
-      name: 'Client frameworks',
-      skills: ['Angular', 'React', 'Expo React Native', 'Ionic', 'jQuery', 'Tailwind'],
-    },
-    {
-      name: 'Server frameworks',
-      skills: ['Entity Framework / Core', '.NET / Core', 'Gin', 'Beego', 'Spring'],
+      name: 'AI',
+      skills: ['AI agents', 'LLMs', 'RAG'],
     },
     {
       name: 'Testing',
       skills: ['xUnit', '.NET unit testing', 'Jasmine'],
     },
     {
-      name: 'DevOps',
-      skills: ['Azure DevOps CI/CD', 'Git', 'Redis Sentinel', 'Docker', 'Jenkins', 'CircleCI'],
-    },
-    {
-      name: 'Cloud/Tools',
-      skills: ['AWS', 'Microsoft Azure', 'GitHub', 'GitLab', 'Jira', 'VS Code', 'Visual Studio'],
+      name: 'Also used',
+      wide: true,
+      skills: [
+        'C',
+        'C++',
+        'Go',
+        'Node.js',
+        'SOAP',
+        'GraphQL (basic)',
+        'Spring',
+        'Gin',
+        'Beego',
+        'Ionic',
+        'jQuery',
+        'Bootstrap',
+        'Materialize',
+        'Jenkins',
+        'CircleCI',
+        'AWS',
+        'Microsoft Azure',
+        'SAP CPI',
+      ],
     },
   ],
   education: [
@@ -279,12 +361,36 @@ export const PROFILE: Profile = {
   ],
   openSourceFallback: [
     {
-      name: 'portfolio',
-      description: 'Personal portfolio with Angular SSG frontend and .NET API backend.',
-      htmlUrl: 'https://github.com/m1dabo/',
+      name: 'portfolio-api',
+      description: 'ASP.NET Core 10 API for Mohammed Dabo portfolio - contact, analytics, admin',
+      htmlUrl: 'https://github.com/m1dabo/portfolio-api',
+      language: 'C#',
+      stars: 1,
+      topics: ['aspnetcore', 'csharp', 'dotnet'],
+    },
+    {
+      name: 'm1dabo.github.io',
+      description: 'Personal portfolio site for Mohammed Dabo - Senior Software Engineer (Angular 20)',
+      htmlUrl: 'https://github.com/m1dabo/m1dabo.github.io',
+      language: 'TypeScript',
+      stars: 1,
+      topics: ['angular', 'typescript', 'github-pages'],
+    },
+    {
+      name: 'GiveYourApplicationAutoDeploySuperPowers',
+      description: 'Project 3 On Udacity nanodegree Cloud DevOps Engineer Course',
+      htmlUrl: 'https://github.com/m1dabo/GiveYourApplicationAutoDeploySuperPowers',
       language: 'TypeScript',
       stars: 0,
-      topics: ['angular', 'dotnet', 'portfolio'],
+      topics: [],
+    },
+    {
+      name: 'CloudFormationPractices',
+      description: 'Some Cloud Formation Practices on AWS cloud.',
+      htmlUrl: 'https://github.com/m1dabo/CloudFormationPractices',
+      language: 'Shell',
+      stars: 0,
+      topics: [],
     },
   ],
 };

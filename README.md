@@ -8,10 +8,12 @@ Static prerender → **GitHub Pages** (user site). Backend lives in [`portfolio-
 
 | Surface | URL |
 | --- | --- |
-| Site | https://m1dabo.github.io (custom: https://m1dabo.is-a.dev after is-a.dev PR) |
-| API | https://api.m1dabo.is-a.dev (see [portfolio-api](https://github.com/m1dabo/portfolio-api)) |
-| LinkedIn | https://www.linkedin.com/in/m1dabo/ |
-| GitHub | https://github.com/m1dabo/ |
+| Site | https://m1dabo.github.io |
+| LinkedIn | https://www.linkedin.com/in/m1dabo |
+| Email | mohammed.dabo@hotmail.com |
+| GitHub | https://github.com/m1dabo |
+
+`m1dabo.is-a.dev` is not registered. Canonical links, the sitemap, and the resume download use `https://m1dabo.github.io`. The contact form falls back to email when `https://api.m1dabo.is-a.dev` is unreachable, and public repos are read from the GitHub API in that case.
 
 ## Quick start
 
