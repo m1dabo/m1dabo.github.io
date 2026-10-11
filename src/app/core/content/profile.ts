@@ -120,7 +120,7 @@ export const PROFILE: Profile = {
   about: [
     'Since October 2021 I have been a Senior Software Engineer on one continuous engagement for the client ZATCA in Riyadh, placed through PaTeXs (Oct 2021 – Nov 2024), SSIS (Dec 2024 – Nov 2025), and JCCS (Dec 2025 – Present). Before that I was a Senior Software Engineer at ArabDT in New Cairo, a Software Engineer at Edge-Pro for Information Systems, and a Full-Stack Software Developer at Cloud Soft, both in Cairo.',
     'The ZATCA client work is end-to-end change delivery on production tax and customs platforms: configurable baseline limits, asset retirement, and related workflows across 15+ .NET microservices. It includes a 3-node Redis Sentinel cluster, SAP Cloud Integration flows with Groovy and XPath, Azure DevOps pipelines and self-hosted build agents, and Angular and Expo React Native migrations, alongside 15+ production servers held at 99.9% uptime.',
-    'Hands-on skills: C# and .NET / .NET Core, Entity Framework, microservices, REST, MSSQL, Azure DevOps, Redis, Angular, React, TypeScript, Docker, Git, and Kubernetes. Familiar with Java, Python, Node.js, and Go. The same list includes AI agents, large language models, and retrieval-augmented generation, data engineering (ETL and pipelines), and DevOps and SRE habits for releases and production care.',
+    'Hands-on skills: C# and .NET / .NET Core, Entity Framework, microservices, REST, MSSQL, Azure DevOps, Redis, Angular, React, TypeScript, Docker, Git, and Kubernetes. Familiar with Python, Node.js, Flutter, Generative AI (LLMs/RAG/agents), Java, and Go. The same list includes data engineering (ETL and pipelines), and DevOps and SRE habits for releases and production care.',
   ],
   availability:
     'Open to senior roles in Saudi Arabia and the GCC: .NET and backend, full-stack, system design, and DevOps.',
@@ -363,7 +363,16 @@ export const PROFILE: Profile = {
     },
     {
       name: 'Familiar with',
-      skills: ['Java', 'Python', 'Node.js', 'Go', 'C', 'C++'],
+      skills: [
+        'Python',
+        'Node.js',
+        'Flutter',
+        'Generative AI (LLMs, RAG, AI agents)',
+        'Java',
+        'Go',
+        'C',
+        'C++',
+      ],
     },
     {
       name: 'Also used',
