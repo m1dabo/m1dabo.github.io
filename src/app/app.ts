@@ -11,7 +11,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
 import { PROFILE } from './core/content/profile';
-import { AnalyticsService } from './core/services/analytics.service';
 import { ThemeService } from './core/services/theme.service';
 import { CommandPaletteComponent } from './shared/components/command-palette/command-palette.component';
 import { TerminalComponent } from './shared/components/terminal/terminal.component';
@@ -32,7 +31,6 @@ const NAV_SECTIONS = [
 })
 export class App implements OnInit {
   private readonly theme = inject(ThemeService);
-  private readonly analytics = inject(AnalyticsService);
   private readonly router = inject(Router);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly palette = viewChild(CommandPaletteComponent);
@@ -46,7 +44,6 @@ export class App implements OnInit {
 
   ngOnInit(): void {
     this.theme.init();
-    this.analytics.init();
 
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))

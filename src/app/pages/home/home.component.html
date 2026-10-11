@@ -6,13 +6,14 @@
       aria-hidden="true"
     ></div>
     <p class="text-sm font-medium tracking-wide text-[var(--accent)]">
-      {{ profile.location }} · ZATCA since Oct 2021
+      {{ profile.location }} · Client ZATCA since Oct 2021
     </p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight text-[var(--fg)] sm:text-5xl md:text-6xl">
       {{ profile.name }}
     </h1>
     <p class="mt-3 text-xl text-[var(--fg)] sm:text-2xl">{{ profile.title }}</p>
     <p class="mt-2 text-base font-medium text-[var(--accent)] sm:text-lg">{{ profile.headline }}</p>
+    <p class="mt-4 text-sm font-medium text-[var(--fg)] sm:text-base">{{ profile.tenure }}</p>
     <p class="mt-6 max-w-2xl text-base leading-relaxed text-[var(--fg-muted)] sm:text-lg">
       {{ profile.summary }}
     </p>
@@ -44,34 +45,20 @@
         Download resume
       </a>
       <a
-        class="inline-flex items-center rounded-lg px-3 py-2.5 text-sm text-[var(--fg-muted)] transition hover:text-[var(--accent)]"
+        class="inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-2.5 text-sm font-medium text-[var(--fg)] transition hover:border-[var(--accent)] md:border-transparent md:bg-transparent md:px-3 md:font-normal md:text-[var(--fg-muted)] md:hover:border-transparent md:hover:bg-transparent md:hover:text-[var(--accent)]"
         [href]="'mailto:' + profile.email"
       >
         Email
       </a>
       <a
-        class="inline-flex items-center rounded-lg px-3 py-2.5 text-sm text-[var(--fg-muted)] transition hover:text-[var(--accent)]"
+        class="inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-2.5 text-sm font-medium text-[var(--fg)] transition hover:border-[var(--accent)] md:border-transparent md:bg-transparent md:px-3 md:font-normal md:text-[var(--fg-muted)] md:hover:border-transparent md:hover:bg-transparent md:hover:text-[var(--accent)]"
         href="#contact"
       >
         Contact
       </a>
     </div>
 
-    <p class="mt-8 text-sm text-[var(--fg-muted)]">
-      @if (viewsToday() !== null) {
-        <span class="inline-flex items-center gap-2">
-          <span class="relative flex h-2 w-2">
-            <span
-              class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-60"
-            ></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent)]"></span>
-          </span>
-          {{ viewsToday() }} visitors today
-        </span>
-      } @else {
-        <span>{{ profile.availability }}</span>
-      }
-    </p>
+    <p class="mt-8 text-sm text-[var(--fg-muted)]">{{ profile.availability }}</p>
   </section>
 
   <!-- About -->
@@ -117,7 +104,8 @@
   <section id="experience" class="scroll-mt-24 border-t border-[var(--border)] py-16">
     <h2 class="text-2xl font-semibold tracking-tight">Experience</h2>
     <p class="mt-2 text-[var(--fg-muted)]">
-      ZATCA since October 2021, after ArabDT, Edge-Pro for Information System, and Cloud Soft.
+      One continuous ZATCA client engagement since October 2021, through PaTeXs, SSIS, and JCCS,
+      after ArabDT, Edge-Pro for Information Systems, and Cloud Soft.
     </p>
     <ol class="mt-10 space-y-10 border-l border-[var(--border)] pl-6">
       @for (job of profile.experience; track job.company + job.start) {
@@ -129,7 +117,24 @@
             <h3 class="text-lg font-semibold">{{ job.role }}</h3>
             <span class="text-sm text-[var(--fg-muted)]">{{ job.start }} – {{ job.end }}</span>
           </div>
-          <p class="text-sm text-[var(--accent)]">{{ job.company }} · {{ job.location }}</p>
+          @if (job.client) {
+            <p class="text-sm text-[var(--accent)]">Client: {{ job.client }} · {{ job.location }}</p>
+            @if (job.placements?.length) {
+              <p class="mt-2 text-sm text-[var(--fg-muted)]">
+                One continuous engagement, placed through:
+              </p>
+              <ul class="mt-2 space-y-1 text-sm text-[var(--fg)]">
+                @for (placement of job.placements; track placement.company) {
+                  <li>
+                    {{ placement.company }} · {{ placement.role }} · {{ placement.start }} –
+                    {{ placement.end }} · {{ placement.location }}
+                  </li>
+                }
+              </ul>
+            }
+          } @else {
+            <p class="text-sm text-[var(--accent)]">{{ job.company }} · {{ job.location }}</p>
+          }
           <ul class="mt-3 space-y-2 text-sm leading-relaxed text-[var(--fg-muted)]">
             @for (bullet of job.bullets; track bullet) {
               <li class="flex gap-2">
@@ -173,7 +178,7 @@
   <section id="case-studies" class="scroll-mt-24 border-t border-[var(--border)] py-16">
     <h2 class="text-2xl font-semibold tracking-tight">Selected work</h2>
     <p class="mt-2 text-[var(--fg-muted)]">
-      Architecture and delivery from ZATCA and ArabDT. Figures match the experience section.
+      Architecture and delivery for the ZATCA client and at ArabDT. Figures match the experience section.
     </p>
     <div class="mt-8 grid gap-6 sm:grid-cols-2">
       @for (study of profile.caseStudies; track study.slug) {
@@ -221,7 +226,7 @@
       >.
     </p>
     <div class="mt-8 grid gap-4 sm:grid-cols-2">
-      @for (repo of repos(); track repo.htmlUrl) {
+      @for (repo of repos; track repo.htmlUrl) {
         <a
           class="block border-b border-[var(--border)] py-4 transition hover:border-[var(--accent)]"
           [href]="repo.htmlUrl"
@@ -264,8 +269,8 @@
         {{ profile.email }}
       </a>
       <a
-        class="inline-flex items-center rounded-lg px-3 py-2.5 text-sm text-[var(--fg-muted)] transition hover:text-[var(--accent)]"
-        href="tel:+966538604774"
+        class="inline-flex items-center rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-4 py-2.5 text-sm font-medium transition hover:border-[var(--accent)]"
+        [href]="'tel:' + profile.phoneE164"
       >
         {{ profile.phone }}
       </a>
@@ -279,78 +284,5 @@
       </a>
     </div>
 
-    <h3 class="mt-12 text-lg font-semibold">Send a message</h3>
-    <p class="mt-1 text-sm text-[var(--fg-muted)]">
-      If the form cannot reach the API, it opens an email to {{ profile.email }}.
-    </p>
-
-    <form
-      class="mt-6 max-w-xl space-y-4"
-      [formGroup]="contactForm"
-      (ngSubmit)="onSubmit()"
-      (focusin)="warmApi()"
-    >
-      <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
-        <label>
-          Website
-          <input type="text" formControlName="website" tabindex="-1" autocomplete="off" />
-        </label>
-      </div>
-
-      <div>
-        <label class="mb-1 block text-sm font-medium" for="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          formControlName="name"
-          autocomplete="name"
-          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
-        />
-      </div>
-      <div>
-        <label class="mb-1 block text-sm font-medium" for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          formControlName="email"
-          autocomplete="email"
-          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
-        />
-      </div>
-      <div>
-        <label class="mb-1 block text-sm font-medium" for="company">Company (optional)</label>
-        <input
-          id="company"
-          type="text"
-          formControlName="company"
-          autocomplete="organization"
-          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
-        />
-      </div>
-      <div>
-        <label class="mb-1 block text-sm font-medium" for="message">Message</label>
-        <textarea
-          id="message"
-          rows="5"
-          formControlName="message"
-          class="w-full rounded-lg border border-[var(--border)] bg-[var(--bg-elevated)] px-3 py-2 text-sm outline-none focus:border-[var(--accent)]"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        class="rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--accent-fg)] transition hover:opacity-90 disabled:opacity-60"
-        [disabled]="submitting()"
-      >
-        {{ submitting() ? 'Sending…' : 'Send message' }}
-      </button>
-
-      @if (submitMessage()) {
-        <p class="text-sm text-[var(--success)]">{{ submitMessage() }}</p>
-      }
-      @if (submitError()) {
-        <p class="text-sm text-[var(--danger)]">{{ submitError() }}</p>
-      }
-    </form>
   </section>
 </div>

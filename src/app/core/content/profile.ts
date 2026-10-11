@@ -1,5 +1,13 @@
 export const SITE_URL = 'https://m1dabo.github.io';
 
+export const SITE_DESCRIPTION =
+  'Senior Software Engineer in Riyadh. .NET and microservices for the client ZATCA since October 2021, placed through PaTeXs, SSIS, and JCCS.';
+
+export const SOCIAL_IMAGE_URL = `${SITE_URL}/og-image.png`;
+
+export const SOCIAL_IMAGE_ALT =
+  'Mohammed Dabo — Senior Software Engineer · .NET · Microservices · Riyadh';
+
 export interface ImpactMetric {
   value: string;
   label: string;
@@ -15,6 +23,14 @@ export interface CaseStudy {
   tags: string[];
 }
 
+export interface Placement {
+  company: string;
+  role: string;
+  location: string;
+  start: string;
+  end: string;
+}
+
 export interface ExperienceItem {
   company: string;
   role: string;
@@ -22,6 +38,8 @@ export interface ExperienceItem {
   start: string;
   end: string;
   bullets: string[];
+  client?: string;
+  placements?: Placement[];
 }
 
 export interface SkillGroup {
@@ -61,9 +79,11 @@ export interface Profile {
   about: string[];
   availability: string;
   focus: FocusArea[];
+  tenure: string;
   location: string;
   email: string;
   phone: string;
+  phoneE164: string;
   links: {
     github: string;
     linkedin: string;
@@ -96,10 +116,10 @@ export const PROFILE: Profile = {
     'Kubernetes',
   ],
   summary:
-    'Senior Software Engineer at the Zakat, Tax and Customs Authority (ZATCA) in Riyadh since October 2021. I build enterprise .NET platforms — distributed microservices, REST APIs, Entity Framework on MSSQL, and Redis — and Angular, React, and TypeScript clients, with Azure DevOps taking them to production.',
+    'Senior Software Engineer in Riyadh, placed with the client Zakat, Tax and Customs Authority (ZATCA) since October 2021 through PaTeXs, SSIS, and JCCS. I build enterprise .NET platforms — distributed microservices, REST APIs, Entity Framework on MSSQL, and Redis — and Angular, React, and TypeScript clients, with Azure DevOps taking them to production.',
   about: [
-    'I have been a Senior Software Engineer at ZATCA since October 2021. Before that I was a Senior Software Engineer at ArabDT in New Cairo, a Software Engineer at Edge-Pro for Information System, and a Full-Stack Software Developer at Cloud Soft, both in Cairo.',
-    'At ZATCA the work is end-to-end change delivery on production tax and customs platforms: configurable baseline limits, asset retirement, and related workflows across 15+ .NET microservices. It includes a 3-node Redis Sentinel cluster, SAP Cloud Integration flows with Groovy and XPath, Azure DevOps pipelines and self-hosted build agents, and Angular and Expo React Native migrations, alongside 15+ production servers held at 99.9% uptime.',
+    'Since October 2021 I have been a Senior Software Engineer on one continuous engagement for the client ZATCA in Riyadh, placed through PaTeXs (Oct 2021 – Nov 2024), SSIS (Dec 2024 – Nov 2025), and JCCS (Dec 2025 – Present). Before that I was a Senior Software Engineer at ArabDT in New Cairo, a Software Engineer at Edge-Pro for Information Systems, and a Full-Stack Software Developer at Cloud Soft, both in Cairo.',
+    'The ZATCA client work is end-to-end change delivery on production tax and customs platforms: configurable baseline limits, asset retirement, and related workflows across 15+ .NET microservices. It includes a 3-node Redis Sentinel cluster, SAP Cloud Integration flows with Groovy and XPath, Azure DevOps pipelines and self-hosted build agents, and Angular and Expo React Native migrations, alongside 15+ production servers held at 99.9% uptime.',
     'Hands-on skills: C# and .NET / .NET Core, Entity Framework, microservices, REST, MSSQL, Azure DevOps, Redis, Angular, React, TypeScript, Docker, Git, Python, Java, and Kubernetes. The same list includes AI agents, large language models, and retrieval-augmented generation, data engineering (ETL and pipelines), and DevOps and SRE habits for releases and production care.',
   ],
   availability:
@@ -111,16 +131,18 @@ export const PROFILE: Profile = {
     },
     {
       label: 'Full-stack',
-      detail: 'Angular, React, and TypeScript, including the Expo React Native and Angular migrations at ZATCA.',
+      detail: 'Angular, React, and TypeScript, including the Expo React Native and Angular migrations for the ZATCA client.',
     },
     {
       label: 'Platform',
       detail: 'Azure DevOps CI/CD, Docker, Kubernetes, Redis Sentinel, Git, and production uptime.',
     },
   ],
+  tenure: '8 years of software engineering (7 in backend)',
   location: 'Riyadh, Saudi Arabia',
   email: 'mohammed.dabo@hotmail.com',
-  phone: '+(966)538604774',
+  phone: '+966 53 860 4774',
+  phoneE164: '+966538604774',
   links: {
     github: 'https://github.com/m1dabo',
     linkedin: 'https://www.linkedin.com/in/m1dabo',
@@ -137,7 +159,7 @@ export const PROFILE: Profile = {
       slug: 'redis-sentinel-ha',
       title: 'Redis Sentinel HA Cluster',
       problem:
-        'Production workloads at ZATCA needed sub-second responses under high concurrency, but database load and single-node cache risk created latency spikes and failover gaps.',
+        'Production workloads for the ZATCA client needed sub-second responses under high concurrency, but database load and single-node cache risk created latency spikes and failover gaps.',
       architecture:
         '3-node Redis master-replica topology with Sentinel failover monitoring, integrated into .NET services as a shared cache and session layer in front of MSSQL.',
       actions: [
@@ -154,7 +176,7 @@ export const PROFILE: Profile = {
     },
     {
       slug: 'zatca-microservices',
-      title: '15+ .NET Microservices at ZATCA',
+      title: '15+ .NET Microservices for the ZATCA Client',
       problem:
         'Monolithic change delivery slowed time-to-market for configurable baseline limits, asset retirement, and related tax/customs workflows.',
       architecture:
@@ -231,15 +253,39 @@ export const PROFILE: Profile = {
   ],
   experience: [
     {
-      company: 'Zakat, Tax and Customs Authority (ZATCA)',
+      company: 'PaTeXs, SSIS, and JCCS',
       role: 'Senior Software Engineer',
       location: 'Riyadh, Saudi Arabia',
       start: 'Oct 2021',
       end: 'Present',
+      client: 'Zakat, Tax and Customs Authority (ZATCA)',
+      placements: [
+        {
+          company: 'JCCS',
+          role: 'Senior Software Engineer',
+          location: 'Riyadh, Saudi Arabia',
+          start: 'Dec 2025',
+          end: 'Present',
+        },
+        {
+          company: 'SSIS',
+          role: 'Senior Software Engineer',
+          location: 'Riyadh, Saudi Arabia',
+          start: 'Dec 2024',
+          end: 'Nov 2025',
+        },
+        {
+          company: 'PaTeXs',
+          role: 'Senior Software Engineer',
+          location: 'Riyadh, Saudi Arabia',
+          start: 'Oct 2021',
+          end: 'Nov 2024',
+        },
+      ],
       bullets: [
         'Spearheaded end-to-end delivery of complex change requests including configurable baseline limits and asset retirement workflows, accelerating time-to-market by 15%.',
         'Architected a high-availability 3-node Redis master-replica cluster with Sentinel failover monitoring, cutting server response times by 40% and database load by 30%.',
-        'Developed over 15 distributed microservices for Zakat, Tax, and Customs Authority using enterprise .NET and modern frameworks, improving system scalability and performance by 30%.',
+        'Developed over 15 distributed microservices for the ZATCA client using enterprise .NET and modern frameworks, improving system scalability and performance by 30%.',
         'Engineered enterprise workflows using SAP Cloud Integration (CPI) with custom Groovy scripts and XPath mapping, reducing integration friction by 20%.',
         'Maintained 15+ production servers ensuring 99.9% uptime.',
         'Automated deployments via Azure DevOps CI/CD pipelines and self-hosted build agents.',
@@ -259,7 +305,7 @@ export const PROFILE: Profile = {
       ],
     },
     {
-      company: 'Edge-Pro for Information System',
+      company: 'Edge-Pro for Information Systems',
       role: 'Software Engineer',
       location: 'Cairo, Egypt',
       start: 'Oct 2018',
@@ -362,7 +408,8 @@ export const PROFILE: Profile = {
   openSourceFallback: [
     {
       name: 'portfolio-api',
-      description: 'ASP.NET Core 10 API for Mohammed Dabo portfolio - contact, analytics, admin',
+      description:
+        '.NET API (ASP.NET Core) for this portfolio — contact, analytics, and admin.',
       htmlUrl: 'https://github.com/m1dabo/portfolio-api',
       language: 'C#',
       stars: 1,
@@ -381,14 +428,6 @@ export const PROFILE: Profile = {
       description: 'Project 3 On Udacity nanodegree Cloud DevOps Engineer Course',
       htmlUrl: 'https://github.com/m1dabo/GiveYourApplicationAutoDeploySuperPowers',
       language: 'TypeScript',
-      stars: 0,
-      topics: [],
-    },
-    {
-      name: 'CloudFormationPractices',
-      description: 'Some Cloud Formation Practices on AWS cloud.',
-      htmlUrl: 'https://github.com/m1dabo/CloudFormationPractices',
-      language: 'Shell',
       stars: 0,
       topics: [],
     },

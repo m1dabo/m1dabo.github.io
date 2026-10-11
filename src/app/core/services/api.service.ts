@@ -158,17 +158,4 @@ export class ApiService {
     });
   }
 
-  trackAnalyticsBeacon(body: {
-    path: string;
-    referrer?: string | null;
-    screenSize?: string | null;
-    dwellMs?: number | null;
-    eventType?: string | null;
-  }): boolean {
-    if (typeof navigator === 'undefined' || !navigator.sendBeacon) {
-      return false;
-    }
-    const blob = new Blob([JSON.stringify(body)], { type: 'application/json' });
-    return navigator.sendBeacon(`${this.baseUrl}/api/analytics/events`, blob);
-  }
 }
