@@ -1,12 +1,12 @@
 export const SITE_URL = 'https://m1dabo.github.io';
 
 export const SITE_DESCRIPTION =
-  'Senior Software Engineer in Riyadh. .NET and microservices for the client ZATCA since October 2021, placed through PaTeXs, SSIS, and JCCS.';
+  'Senior Software Engineer in Riyadh. Distributed systems and microservices for the client ZATCA since October 2021, placed through PaTeXs, SSIS, and JCCS.';
 
 export const SOCIAL_IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 export const SOCIAL_IMAGE_ALT =
-  'Mohammed Dabo — Senior Software Engineer · .NET · Microservices · Riyadh';
+  'Mohammed Dabo — Senior Software Engineer · Distributed Systems · Microservices · Riyadh';
 
 export interface ImpactMetric {
   value: string;
@@ -100,7 +100,7 @@ export interface Profile {
 export const PROFILE: Profile = {
   name: 'Mohammed Dabo',
   title: 'Senior Software Engineer',
-  headline: '.NET · Microservices · Full-stack · DevOps',
+  headline: 'Distributed Systems · Microservices · Riyadh',
   coreSkills: [
     'C# / .NET',
     'Entity Framework',
