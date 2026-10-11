@@ -10,8 +10,7 @@ Site URL: https://m1dabo.github.io
 
 ## 2. API URL
 
-Production builds call `https://api.m1dabo.is-a.dev` from `src/environments/environment.prod.ts`.  
-That host is not live. The site already falls back: the contact form opens email, stats stay hidden, and repositories load from the public GitHub API. Do not point canonical or resume links at the API domain.
+`https://api.m1dabo.is-a.dev` is not live. The site does not call it: there is no contact form, no analytics beacon, no resume-download ping, and no admin route. Contact is email, phone, and LinkedIn. Do not point canonical, social-image, or resume links at the API domain.
 
 ## 3. Free domain `m1dabo.is-a.dev`
 

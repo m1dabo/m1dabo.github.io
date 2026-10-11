@@ -126,14 +126,20 @@ export class TerminalComponent {
           `${PROFILE.name} — ${PROFILE.title}`,
           PROFILE.headline,
           PROFILE.location,
-          `ZATCA since Oct 2021 · ${PROFILE.links.site}`,
+          `Client ZATCA since Oct 2021, via PaTeXs, SSIS, and JCCS · ${PROFILE.links.site}`,
         ];
       case 'skills':
         return PROFILE.skills.map((g) => `${g.name}: ${g.skills.join(', ')}`);
       case 'experience':
-        return PROFILE.experience.map(
-          (e) => `${e.role} @ ${e.company} (${e.start} – ${e.end})`,
-        );
+        return PROFILE.experience.flatMap((e) => {
+          if (e.placements?.length) {
+            return e.placements.map(
+              (placement) =>
+                `${placement.role} @ ${placement.company} (${placement.start} – ${placement.end}) · Client: ${e.client}`,
+            );
+          }
+          return [`${e.role} @ ${e.company} (${e.start} – ${e.end})`];
+        });
       case 'hire':
         return [
           `Email: ${PROFILE.email}`,

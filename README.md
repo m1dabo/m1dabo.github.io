@@ -13,7 +13,7 @@ Static prerender → **GitHub Pages** (user site). Backend lives in [`portfolio-
 | Email | mohammed.dabo@hotmail.com |
 | GitHub | https://github.com/m1dabo |
 
-`m1dabo.is-a.dev` is not registered. Canonical links, the sitemap, and the resume download use `https://m1dabo.github.io`. The contact form falls back to email when `https://api.m1dabo.is-a.dev` is unreachable, and public repos are read from the GitHub API in that case.
+`m1dabo.is-a.dev` is not registered. Canonical links, the sitemap, the social card, and the resume download use `https://m1dabo.github.io`. The public site does not call `https://api.m1dabo.is-a.dev`. Contact is email, phone, and LinkedIn.
 
 ## Quick start
 
@@ -22,9 +22,7 @@ npm ci
 npm start
 ```
 
-Open http://localhost:4200. API defaults to `http://localhost:5080` (run portfolio-api locally).
-
-Production API URL is set in `src/environments/environment.prod.ts`.
+Open http://localhost:4200. The site does not call portfolio-api.
 
 ## Build
 
