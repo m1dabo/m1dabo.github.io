@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   private readonly seo = inject(SeoService);
 
   readonly profile = PROFILE;
-  readonly repos = PROFILE.openSourceFallback;
 
   ngOnInit(): void {
     this.seo.setPage({ path: '/' });
