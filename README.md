@@ -22,9 +22,7 @@ npm ci
 npm start
 ```
 
-Open http://localhost:4200. API defaults to `http://localhost:5080` (run portfolio-api locally).
-
-Production API URL is set in `src/environments/environment.prod.ts`.
+Open http://localhost:4200. The site does not call portfolio-api.
 
 ## Build
 

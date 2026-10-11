@@ -6,7 +6,7 @@ export const SITE_DESCRIPTION =
 export const SOCIAL_IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 export const SOCIAL_IMAGE_ALT =
-  'Mohammed Dabo — Senior Software Engineer · Distributed Systems · Microservices · Riyadh';
+  'Mohammed Dabo — Senior Software Engineer · Riyadh | Distributed Systems · Microservices · Cloud · AI Integration · Full-Stack';
 
 export interface ImpactMetric {
   value: string;
@@ -100,7 +100,7 @@ export interface Profile {
 export const PROFILE: Profile = {
   name: 'Mohammed Dabo',
   title: 'Senior Software Engineer',
-  headline: 'Distributed Systems · Microservices · Riyadh',
+  headline: 'Distributed Systems · Microservices · Cloud · AI Integration · Full-Stack',
   coreSkills: [
     'C# / .NET',
     'Entity Framework',
@@ -120,7 +120,7 @@ export const PROFILE: Profile = {
   about: [
     'Since October 2021 I have been a Senior Software Engineer on one continuous engagement for the client ZATCA in Riyadh, placed through PaTeXs (Oct 2021 – Nov 2024), SSIS (Dec 2024 – Nov 2025), and JCCS (Dec 2025 – Present). Before that I was a Senior Software Engineer at ArabDT in New Cairo, a Software Engineer at Edge-Pro for Information Systems, and a Full-Stack Software Developer at Cloud Soft, both in Cairo.',
     'The ZATCA client work is end-to-end change delivery on production tax and customs platforms: configurable baseline limits, asset retirement, and related workflows across 15+ .NET microservices. It includes a 3-node Redis Sentinel cluster, SAP Cloud Integration flows with Groovy and XPath, Azure DevOps pipelines and self-hosted build agents, and Angular and Expo React Native migrations, alongside 15+ production servers held at 99.9% uptime.',
-    'Hands-on skills: C# and .NET / .NET Core, Entity Framework, microservices, REST, MSSQL, Azure DevOps, Redis, Angular, React, TypeScript, Docker, Git, Python, Java, and Kubernetes. The same list includes AI agents, large language models, and retrieval-augmented generation, data engineering (ETL and pipelines), and DevOps and SRE habits for releases and production care.',
+    'Hands-on skills: C# and .NET / .NET Core, Entity Framework, microservices, REST, MSSQL, Azure DevOps, Redis, Angular, React, TypeScript, Docker, Git, and Kubernetes. Familiar with Java, Python, Node.js, and Go. The same list includes AI agents, large language models, and retrieval-augmented generation, data engineering (ETL and pipelines), and DevOps and SRE habits for releases and production care.',
   ],
   availability:
     'Open to senior roles in Saudi Arabia and the GCC: .NET and backend, full-stack, system design, and DevOps.',
@@ -159,18 +159,16 @@ export const PROFILE: Profile = {
       slug: 'redis-sentinel-ha',
       title: 'Redis Sentinel HA Cluster',
       problem:
-        'Production workloads for the ZATCA client needed sub-second responses under high concurrency, but database load and single-node cache risk created latency spikes and failover gaps.',
+        'Production workloads for the ZATCA client needed faster responses and lower database load.',
       architecture:
         '3-node Redis master-replica topology with Sentinel failover monitoring, integrated into .NET services as a shared cache and session layer in front of MSSQL.',
       actions: [
         'Designed and deployed a high-availability Redis master-replica cluster with Sentinel health checks.',
-        'Tuned cache keys, TTLs, and invalidation strategies for baseline limits and asset workflows.',
-        'Instrumented failover drills and connection resilience in application clients.',
       ],
       results: [
         'Cut server response times by ~40%.',
         'Reduced database load by ~30%.',
-        'Improved resilience during node failures with automated Sentinel failover.',
+        'Automated Sentinel failover across the 3-node cluster.',
       ],
       tags: ['Redis', 'HA', 'Caching', '.NET', 'Performance'],
     },
@@ -189,7 +187,6 @@ export const PROFILE: Profile = {
       results: [
         'Accelerated time-to-market by ~15%.',
         'Improved system scalability and performance by ~30%.',
-        'Enabled safer, incremental releases across domain boundaries.',
       ],
       tags: ['.NET', 'Microservices', 'REST', 'Angular', 'React Native'],
     },
@@ -203,12 +200,9 @@ export const PROFILE: Profile = {
       actions: [
         'Engineered CPI workflows with reusable Groovy transformations.',
         'Implemented XPath mappings for structured payload translation.',
-        'Hardened error handling and monitoring for production integrations.',
       ],
       results: [
         'Reduced integration friction by ~20%.',
-        'Shortened onboarding of new integration paths.',
-        'Improved consistency of cross-system message contracts.',
       ],
       tags: ['SAP CPI', 'Groovy', 'XPath', 'Integration', 'Enterprise'],
     },
@@ -216,9 +210,9 @@ export const PROFILE: Profile = {
       slug: 'azure-devops-cicd',
       title: 'Azure DevOps CI/CD at 99.9% Uptime',
       problem:
-        'Operating 15+ production servers with manual or inconsistent releases risked downtime and slow recovery for mission-critical authority platforms.',
+        'Operating 15+ production servers with manual or inconsistent releases risked downtime and slow recovery for production platforms.',
       architecture:
-        'Azure DevOps pipelines with self-hosted build agents, automated deployments, and standardized release gates across production estates.',
+        'Azure DevOps pipelines with self-hosted build agents and automated deployments across production estates.',
       actions: [
         'Automated deployments via Azure DevOps CI/CD pipelines.',
         'Operated self-hosted build agents for controlled enterprise builds.',
@@ -226,18 +220,16 @@ export const PROFILE: Profile = {
       ],
       results: [
         'Sustained 99.9% uptime across production servers.',
-        'Reduced deployment risk through automation.',
-        'Improved release predictability for cross-team delivery.',
       ],
       tags: ['Azure DevOps', 'CI/CD', 'DevOps', 'Reliability'],
     },
     {
       slug: 'arabdt-saas',
-      title: 'Multi-tenant SaaS at ArabDT',
+      title: 'SaaS Microservices at ArabDT',
       problem:
         'Rapid client growth demanded a distributed SaaS platform that could absorb traffic spikes without sacrificing uptime or permission flexibility.',
       architecture:
-        'Distributed microservices SaaS with RESTful APIs, database-driven permissions, and multi-tenant delivery for 20+ enterprise clients.',
+        'Distributed microservices SaaS with RESTful APIs, database-driven permissions, and delivery for 20+ enterprise clients.',
       actions: [
         'Engineered scalable microservices handling sustained traffic growth.',
         'Delivered high-throughput SaaS services for 20+ enterprise clients.',
@@ -248,7 +240,7 @@ export const PROFILE: Profile = {
         'Boosted system efficiency by ~25% and cut downtime by ~40%.',
         'Improved project delivery efficiency by ~20% via flexible permissions.',
       ],
-      tags: ['SaaS', 'Microservices', 'Multi-tenant', 'REST', 'Permissions'],
+      tags: ['SaaS', 'Microservices', 'REST', 'Permissions'],
     },
   ],
   experience: [
@@ -338,8 +330,6 @@ export const PROFILE: Profile = {
         'Entity Framework / EF Core',
         'Microservices',
         'REST',
-        'Java',
-        'Python',
       ],
     },
     {
@@ -372,22 +362,17 @@ export const PROFILE: Profile = {
       skills: ['xUnit', '.NET unit testing', 'Jasmine'],
     },
     {
+      name: 'Familiar with',
+      skills: ['Java', 'Python', 'Node.js', 'Go', 'C', 'C++'],
+    },
+    {
       name: 'Also used',
       wide: true,
       skills: [
-        'C',
-        'C++',
-        'Go',
-        'Node.js',
         'SOAP',
         'GraphQL (basic)',
-        'Spring',
-        'Gin',
-        'Beego',
         'Ionic',
-        'jQuery',
         'Bootstrap',
-        'Materialize',
         'Jenkins',
         'CircleCI',
         'AWS',
@@ -402,7 +387,7 @@ export const PROFILE: Profile = {
       minor: 'Software Engineering',
       school: 'Ain Shams University',
       location: 'Cairo, Egypt',
-      year: '2017',
+      year: 'Sep 2013 – Jun 2017',
     },
   ],
   openSourceFallback: [

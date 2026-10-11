@@ -16,10 +16,6 @@ export const serverRoutes: ServerRoute[] = [
     getPrerenderParams: async () => CASE_STUDY_SLUGS.map((slug) => ({ slug })),
   },
   {
-    path: 'admin',
-    renderMode: RenderMode.Prerender,
-  },
-  {
     path: '**',
     renderMode: RenderMode.Prerender,
   },
