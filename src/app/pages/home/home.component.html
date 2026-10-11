@@ -216,38 +216,6 @@
     }
   </section>
 
-  <!-- Open source -->
-  <section id="open-source" class="scroll-mt-24 border-t border-[var(--border)] py-16">
-    <h2 class="text-2xl font-semibold tracking-tight">Open source</h2>
-    <p class="mt-2 text-[var(--fg-muted)]">
-      Public repositories on
-      <a class="text-[var(--accent)] hover:underline" [href]="profile.links.github" target="_blank" rel="noopener"
-        >GitHub</a
-      >.
-    </p>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2">
-      @for (repo of repos; track repo.htmlUrl) {
-        <a
-          class="block border-b border-[var(--border)] py-4 transition hover:border-[var(--accent)]"
-          [href]="repo.htmlUrl"
-          target="_blank"
-          rel="noopener"
-        >
-          <div class="flex items-baseline justify-between gap-3">
-            <h3 class="font-semibold">{{ repo.name }}</h3>
-            <span class="text-xs text-[var(--fg-muted)]">★ {{ repo.stars }}</span>
-          </div>
-          @if (repo.description) {
-            <p class="mt-1 text-sm text-[var(--fg-muted)]">{{ repo.description }}</p>
-          }
-          @if (repo.language) {
-            <p class="mt-2 text-xs text-[var(--accent)]">{{ repo.language }}</p>
-          }
-        </a>
-      }
-    </div>
-  </section>
-
   <!-- Contact -->
   <section id="contact" class="scroll-mt-24 border-t border-[var(--border)] py-16">
     <h2 class="text-2xl font-semibold tracking-tight">Contact</h2>

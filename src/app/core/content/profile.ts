@@ -61,15 +61,6 @@ export interface EducationItem {
   year: string;
 }
 
-export interface GitHubRepoFallback {
-  name: string;
-  description: string;
-  htmlUrl: string;
-  language: string;
-  stars: number;
-  topics: string[];
-}
-
 export interface Profile {
   name: string;
   title: string;
@@ -94,7 +85,6 @@ export interface Profile {
   experience: ExperienceItem[];
   skills: SkillGroup[];
   education: EducationItem[];
-  openSourceFallback: GitHubRepoFallback[];
 }
 
 export const PROFILE: Profile = {
@@ -397,33 +387,6 @@ export const PROFILE: Profile = {
       school: 'Ain Shams University',
       location: 'Cairo, Egypt',
       year: 'Sep 2013 – Jun 2017',
-    },
-  ],
-  openSourceFallback: [
-    {
-      name: 'portfolio-api',
-      description:
-        '.NET API (ASP.NET Core) for this portfolio — contact, analytics, and admin.',
-      htmlUrl: 'https://github.com/m1dabo/portfolio-api',
-      language: 'C#',
-      stars: 1,
-      topics: ['aspnetcore', 'csharp', 'dotnet'],
-    },
-    {
-      name: 'm1dabo.github.io',
-      description: 'Personal portfolio site for Mohammed Dabo - Senior Software Engineer (Angular 20)',
-      htmlUrl: 'https://github.com/m1dabo/m1dabo.github.io',
-      language: 'TypeScript',
-      stars: 1,
-      topics: ['angular', 'typescript', 'github-pages'],
-    },
-    {
-      name: 'GiveYourApplicationAutoDeploySuperPowers',
-      description: 'Project 3 On Udacity nanodegree Cloud DevOps Engineer Course',
-      htmlUrl: 'https://github.com/m1dabo/GiveYourApplicationAutoDeploySuperPowers',
-      language: 'TypeScript',
-      stars: 0,
-      topics: [],
     },
   ],
 };

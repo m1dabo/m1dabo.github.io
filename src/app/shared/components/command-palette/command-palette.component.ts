@@ -83,7 +83,6 @@ export class CommandPaletteComponent {
     { id: 'case-studies', label: 'Go to Selected Work', run: () => this.scroll('case-studies') },
     { id: 'experience', label: 'Go to Experience', run: () => this.scroll('experience') },
     { id: 'skills', label: 'Go to Skills', run: () => this.scroll('skills') },
-    { id: 'open-source', label: 'Go to Open Source', run: () => this.scroll('open-source') },
     { id: 'education', label: 'Go to Education', run: () => this.scroll('education') },
     { id: 'contact', label: 'Go to Contact', run: () => this.scroll('contact') },
     { id: 'theme', label: 'Toggle theme', hint: 'Light / Dark', run: () => this.theme.toggleLightDark() },
